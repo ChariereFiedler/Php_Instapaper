@@ -12,7 +12,6 @@ use FOS\RestBundle\Controller\Annotations\Post;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
-use FOS\RestBundle\View\View;
 
 class LinkController extends  FOSRestController
 {
