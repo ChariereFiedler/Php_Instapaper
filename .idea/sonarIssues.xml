@@ -78,6 +78,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/AppBundle/Form/NewLinkType.php">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/AppBundle/Repository/LinkRepository.php">
           <value>
             <set />
@@ -94,6 +99,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/AppBundle/Resources/views/Link/index.html.twig">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/AppBundle/Resources/views/Link/new.html.twig">
           <value>
             <set />
           </value>

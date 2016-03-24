@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Link;
+use AppBundle\Form\NewLinkType;
 use AppBundle\Repository\LinkRepository;
 use Doctrine\ORM\EntityManager;
 use FOS\RestBundle\Controller\FOSRestController;
@@ -23,6 +24,17 @@ class LinkController extends  FOSRestController
         return $this->getEntityManager()->getRepository($model);
     }
 
+    /**
+     * @Get("/links/create", name="links_create")
+     * @View(template="AppBundle:Link:new.html.twig")
+     * @return Link
+     *
+     */
+    public function createLinkAction(){
+        $form = $this->createForm("AppBundle/Form/NewLinkType");
+
+        return $form->createView();
+    }
 
     /**
      * @param Link $link
