@@ -1,0 +1,35 @@
+<div class="article"> <!-- liked tag possible -->
+    <div class="topArticle">
+        <div class="articleResume">
+            {% if link.url %}
+            <a class="title" href="{{link.url}}">
+            {% endif %}
+                <h2>{{link.title}}</h2>
+                {% if link.url %}
+            </a>
+            {% endif %}
+        </div>
+
+        <div class="articleImg">
+            {% if link.imgUrl is defined%}
+                <img src="{{imgUrl}}"/>
+            {% endif %}
+        </div>
+    </div>
+
+    <div>
+        <div class="buttonArticle">
+            <i class="fa fa-heart-o fa-lg unlike"></i>
+            <i class="fa fa-heart fa-lg like"></i>
+        </div>
+        <div class="buttonArticle">
+            <i class="fa fa-folder-o fa-lg"></i>
+        </div>
+        <div class="buttonArticle">
+            <i class="fa fa-archive fa-lg"></i>
+        </div>
+        <div class="buttonArticle">
+            <i class="fa fa-trash-o fa-lg"></i>
+        </div>
+    </div>
+</div>

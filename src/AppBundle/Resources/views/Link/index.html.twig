@@ -1,0 +1,7 @@
+{% extends "AppBundle::template.html.twig" %}
+
+{% block content %}
+    {% for link in data %}
+        {% include "AppBundle:Link:_row.html.twig" with {'link' : link} only %}
+    {% endfor %}
+{% endblock %}

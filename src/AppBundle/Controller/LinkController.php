@@ -12,7 +12,6 @@ use FOS\RestBundle\Controller\Annotations\Post;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
-use FOS\RestBundle\View\View;
 
 class LinkController extends  FOSRestController
 {
@@ -30,22 +29,22 @@ class LinkController extends  FOSRestController
      * @View()
      * @return Link
      */
-    public function getLinkAction(Link $link){
+    public function getLinkAction(Link $link):Link{
         return $link;
     }
 
     /**
      * @return Response
-     * @View()
+     * @View(template="AppBundle:Link:index.html.twig")
      */
     public function getLinksAction(){
-        return  $this->getRepository()->findAll();
+        return $this->getRepository()->findAll();
     }
 
     /**
      * @param Link $link
      * @return Response
-     * @View(statusCode=201)
+     * @View(statusCode=201, template="")
      *
      */
     //TODO: the current copy function not working

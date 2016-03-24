@@ -60,7 +60,7 @@ doctrine:
 
 fos_rest:
     routing_loader:
-        default_format: json
+        default_format: html
     view:
         view_response_listener: true
     body_converter:
@@ -68,15 +68,13 @@ fos_rest:
         validate: true
         validation_errors_argument: validationErrors
     disable_csrf_role: ROLE_API
-    default_engine: twig
-    templating_format: true
     exception:
         enabled: true
     format_listener:
         enabled: true
         rules:
           path: '^/'
-          priorities: ['json','xml']
+          priorities: ['html','json','xml']
           fallback_format: 'html'
 
 
@@ -85,3 +83,8 @@ sensio_framework_extra:
         annotations: false
     request:
         converters: true
+
+assetic:
+    debug:          "%kernel.debug%"
+    use_controller: false
+    bundles:        ['AppBundle' ]
