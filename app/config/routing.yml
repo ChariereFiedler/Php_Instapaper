@@ -1,3 +1,10 @@
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+links_api:
+    type:   rest
+    prefix: api
+    resource: AppBundle\Controller\LinkController
+    defaults:
+        _format: json
