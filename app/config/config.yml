@@ -17,7 +17,7 @@ framework:
         resource: "%kernel.root_dir%/config/routing.yml"
         strict_requirements: ~
     form:            ~
-    csrf_protection: ~
+    csrf_protection: false
     validation:      { enable_annotations: true }
     #serializer:      { enable_annotations: true }
     templating:
@@ -62,11 +62,23 @@ fos_rest:
     routing_loader:
         default_format: json
     view:
-        view_response_listener: 'force'
+        view_response_listener: true
     body_converter:
         enabled: true
         validate: true
         validation_errors_argument: validationErrors
+    disable_csrf_role: ROLE_API
+    default_engine: twig
+    templating_format: true
+    exception:
+        enabled: true
+    format_listener:
+        enabled: true
+        rules:
+          path: '^/'
+          priorities: ['json','xml']
+          fallback_format: 'html'
+
 
 sensio_framework_extra:
     view:
