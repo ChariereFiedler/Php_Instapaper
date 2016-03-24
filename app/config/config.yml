@@ -60,7 +60,7 @@ doctrine:
 
 fos_rest:
     routing_loader:
-        default_format: json
+        default_format: html
     view:
         view_response_listener: true
     body_converter:
@@ -74,7 +74,7 @@ fos_rest:
         enabled: true
         rules:
           path: '^/'
-          priorities: ['json','xml']
+          priorities: ['html','json','xml']
           fallback_format: 'html'
 
 
@@ -83,3 +83,8 @@ sensio_framework_extra:
         annotations: false
     request:
         converters: true
+
+assetic:
+    debug:          "%kernel.debug%"
+    use_controller: false
+    bundles:        ['AppBundle' ]

@@ -1,0 +1,208 @@
+.popUp {
+	width: 700px;
+	border-radius: 10px;
+	background-color: white;
+}
+
+.popUp div {
+	padding: 0px 15px;
+}
+
+div.popUp .headerPopUp {
+	width: 100%;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+	border-bottom-color: #BDBDBD;
+}
+
+div.popUp .headerPopUp div {
+	display: inline-block;
+}
+
+div.popUp .headerPopUp .title {
+	width: 90%;
+}
+
+div.popUp .headerPopUp .cross {
+	color: black;
+}
+
+div.popUp .headerPopUp .cross:hover {
+	cursor: pointer;
+	color: #1a8cff;
+}
+
+div.popUp form {
+	padding: 10px;
+}
+
+div.popUp .form-group {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+div.popUp form button {
+	display: inline-block;
+	height: 50px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding: 0px 20px 0px 20px;
+}
+
+div.popUp .form-group .error-block {
+	display: none;
+}
+
+div.popUp .form-group.has-error .error-block {
+	display: block;
+}
+
+div.article {
+	width: 1000px;
+	background-color: white;
+}
+
+div.article .topArticle {
+	width: 100%;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+	border-bottom-color: #BDBDBD;
+}
+
+div.article .articleResume {
+	vertical-align: top;
+	display: inline-block;
+	width : 800px;
+	height: 100%;
+	padding: 0px 10px;
+}
+
+div.article .articleResume .title {
+	
+	color: black;
+}
+
+div.article .articleResume .title:hover {
+	color: #1a8cff;
+	text-decoration: none;	
+}
+
+div.article .articleResume .auteur {
+	color: gray;
+}
+
+div.article .articleResume .resume {
+	color: black;
+}
+
+div.article .articleImg {
+	vertical-align: top;
+	display: inline-block;
+	margin: 10px;
+	width: 150px;
+	height: 150px;
+}
+
+
+div.article .buttonArticle {
+	vertical-align: top;
+	display: inline-block;
+	margin: 5px 0px 5px 10px;
+}
+
+div.article .buttonArticle:hover {
+	cursor: pointer;
+	color: #1a8cff;
+}
+
+.like {
+	display: none;
+}
+
+.unlike {
+	display: inline-block;
+}
+
+div.liked .like {
+	display: inline-block;
+}
+
+div.liked .unlike {
+	display: none;
+}
+
+.folderButton-block {
+	margin: 4px;
+}
+
+.folderButton {
+	font-size: 1.2em;
+	font-weight: normal;
+	color: black;
+}
+
+.folderButton:hover {
+	font-weight: normal;
+	color: #1a8cff;
+	text-decoration: none;	
+}
+
+.folderButton.selected {
+	font-weight: bold;
+	color: #1a8cff;
+}
+
+.folderButton.selected :hover{
+	font-weight: bold;
+	color: #1a8cff;
+	text-decoration: none;	
+}
+
+.head {
+	background-color: white;
+	width: 100%;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+	border-bottom-color: #BDBDBD;
+}
+
+.head .title {
+	vertical-align: top;
+	display: inline-block;
+	margin-left: 10%;
+}
+
+.head .title:hover {
+	cursor: pointer;
+	color: #1a8cff;
+}
+
+.head .search {
+	margin-top: 20px;
+	vertical-align: top;
+	display: inline-block;
+	margin-left: 50px;
+	width: 500px;
+}
+
+.head .search input{
+	width: 90%;
+	display: inline-block;
+}
+
+.head .search .loupe {
+	margin-left: 20px;
+	display: inline-block;
+}
+
+.head .search .loupe:hover {
+	cursor: pointer;
+	color: #1a8cff;
+}
+
+.head .addLink {
+	margin-top: 20px;
+	vertical-align: top;
+	display: inline-block;
+	margin-left: 50px;
+}
