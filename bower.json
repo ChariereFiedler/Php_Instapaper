@@ -1,0 +1,21 @@
+{
+  "name": "Bookmark",
+  "homepage": "https://github.com/ChariereFiedler/Php_Instapaper",
+  "authors": [
+    "Cedric Chariere Fiedler <Chariere.fiedler.cedric@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "startbootstrap-sb-admin-2": "^1.0.8"
+  }
+}
