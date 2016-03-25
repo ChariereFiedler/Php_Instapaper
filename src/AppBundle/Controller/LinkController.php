@@ -56,8 +56,9 @@ class LinkController extends  FOSRestController
     }
 
     /**
-     * @return Link
+     * @param Link $link
      * @View()
+     * @return Link
      */
     public function patchLinkAction(Link $link):Link{
         $this->getEntityManager()->persist($link);

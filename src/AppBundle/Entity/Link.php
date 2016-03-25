@@ -16,7 +16,7 @@ class Link
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="guid")
+     * @ORM\Column(name="id", type="string")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
      *
@@ -63,7 +63,7 @@ class Link
      * @var bool
      * @ORM\Column(name="Liked", type="boolean", options={"default"=false})
      */
-    private $liked=true;
+    private $liked=false;
 
 
     /**

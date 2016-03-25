@@ -1,4 +1,8 @@
-<div class="col-lg-8" name="link">
+{% if link.liked %}
+    <div class="col-lg-8 liked" name="link">
+{% else %}
+    <div class="col-lg-8" name="link">
+{% endif %}
     <div class="panel panel-primary">
         <div class="panel-heading">
             {% if link.url %}
@@ -25,8 +29,8 @@
         <div class="panel-footer">
             <ul class="nav navbar-top-links footerRow">
                 <li>
-                    <i class="fa fa-heart-o fa-lg unlike"></i>
-                    <i class="fa fa-heart fa-lg like"></i>
+                    <like-link data-id="{{ link.id }}" class="unlikeLink fa fa-heart-o fa-lg unlike" data-target="link"></like-link>
+                    <unlike-link data-id="{{ link.id }}" class="likeLink fa fa-heart fa-lg like" data-target="link"></unlike-link>
                 </li>
                 <li>
                     <i class="fa fa-folder-o fa-lg"></i>
