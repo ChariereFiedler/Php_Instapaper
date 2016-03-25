@@ -11,6 +11,7 @@ use FOS\RestBundle\Controller\Annotations\View;
 use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\Controller\Annotations\Post;
 use FOS\RestBundle\Controller\Annotations\Delete;
+use FOS\RestBundle\Controller\Annotations\Patch;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
@@ -52,6 +53,16 @@ class LinkController extends  FOSRestController
      */
     public function getLinksAction(){
         return $this->getRepository()->findAll();
+    }
+
+    /**
+     * @return Link
+     * @View()
+     */
+    public function patchLinkAction(Link $link):Link{
+        $this->getEntityManager()->persist($link);
+        $this->getEntityManager()->flush();
+        return $link;
     }
 
 
