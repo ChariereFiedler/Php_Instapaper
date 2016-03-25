@@ -9,7 +9,7 @@
     {% include "AppBundle:Common:_contentListRow.html.twig" with {'data' : data, 'icon' : 'fa-home', 'title' : 'Home', 'editable' : false} only %}
 
     <script type="text/javascript">
-        $(".deleteLink").click(function(){
+        $("delete-link").click(function(){
             var that = this;
             var id = $(that).data("id");
 
