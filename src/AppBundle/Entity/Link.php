@@ -48,9 +48,9 @@ class Link
     /**
      * @var bool
      *
-     * @ORM\Column(name="Readed", type="boolean", options={"default"=false})
+     * @ORM\Column(name="Read", type="boolean", options={"default"=false})
      */
-    private $readed=false;
+    private $read=false;
 
     /**
      * @var bool
@@ -63,7 +63,13 @@ class Link
      * @var bool
      * @ORM\Column(name="Liked", type="boolean", options={"default"=false})
      */
-    private $liked=true;
+    private $liked=false;
+
+    /**
+     * @var bool
+     * @ORM\Column(name="Built", type="boolean", options={"default"=false})
+     */
+    private $built=false;
 
 
     /**
@@ -76,9 +82,6 @@ class Link
         return $this->id;
     }
 
-
-
-
     /**
      * Set title
      *
@@ -86,7 +89,7 @@ class Link
      *
      * @return Link
      */
-    public function setTitle($title)
+    public function setTitle(string $title):Link
     {
         $this->title = $title;
 
@@ -110,7 +113,7 @@ class Link
      *
      * @return Link
      */
-    public function setContent($content)
+    public function setContent(string $content):Link
     {
         $this->content = $content;
 
@@ -134,7 +137,7 @@ class Link
      *
      * @return Link
      */
-    public function setUrl($url)
+    public function setUrl(string $url):Link
     {
         $this->url = $url;
 
@@ -146,7 +149,7 @@ class Link
      *
      * @return string
      */
-    public function getUrl()
+    public function getUrl():string
     {
         return $this->url;
     }
@@ -154,13 +157,13 @@ class Link
     /**
      * Set readed
      *
-     * @param boolean $readed
+     * @param boolean $read
      *
      * @return Link
      */
-    public function setReaded($readed)
+    public function setRead(bool $read):Link
     {
-        $this->readed = $readed;
+        $this->read = $read;
 
         return $this;
     }
@@ -170,9 +173,9 @@ class Link
      *
      * @return bool
      */
-    public function getReaded()
+    public function isRead():bool
     {
-        return $this->readed;
+        return $this->read;
     }
 
     /**
@@ -182,7 +185,7 @@ class Link
      *
      * @return Link
      */
-    public function setArchived($archived)
+    public function setArchived(bool $archived):Link
     {
         $this->archived = $archived;
 
@@ -194,7 +197,7 @@ class Link
      *
      * @return bool
      */
-    public function getArchived()
+    public function isArchived()
     {
         return $this->archived;
     }
@@ -206,7 +209,7 @@ class Link
      *
      * @return Link
      */
-    public function setLiked($liked)
+    public function setLiked(bool $liked):Link
     {
         $this->liked = $liked;
 
@@ -218,8 +221,32 @@ class Link
      *
      * @return boolean
      */
-    public function getLiked()
+    public function isLiked()
     {
         return $this->liked;
+    }
+
+    /**
+     * Set built
+     *
+     * @param boolean $built
+     *
+     * @return Link
+     */
+    public function setBuilt(bool $built):Link
+    {
+        $this->built = $built;
+
+        return $this;
+    }
+
+    /**
+     * Get built
+     *
+     * @return boolean
+     */
+    public function isBuilt():bool
+    {
+        return $this->built;
     }
 }
