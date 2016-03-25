@@ -43,7 +43,7 @@ class Link
      *
      * @ORM\Column(name="Resume", type="text", nullable=true)
      */
-    private $resume;
+    public $resume;
 
     /**
      * @var string
@@ -57,7 +57,7 @@ class Link
      *
      * @ORM\Column(name="ImgUrl", type="string", length=500, options={"default"=""})
      */
-    private $imgUrl="";
+    public $imgUrl="";
 
     /**
      * @var bool

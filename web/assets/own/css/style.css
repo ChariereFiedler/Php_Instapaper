@@ -115,5 +115,8 @@ div.popUp .form-group.has-error .error-block {
 }
 
 .articleImg {
+	background-repeat: no-repeat;
+	background-size:cover;
+	background-position: center;
 	height: 180px;
 }
