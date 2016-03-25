@@ -99,7 +99,6 @@ class LinkController extends RestController
     public function postLinkAction(Link $link,  ConstraintViolationListInterface $validationErrors):Link{
             $this->getEntityManager()->persist($link);
             $this->getEntityManager()->flush();
-
         return $link;
     }
 
@@ -112,18 +111,7 @@ class LinkController extends RestController
      * @Patch("/links/{link}")
      */
     public function patchLinkAction(Link $link, Link $toUpdate):Link{
-
-        //TODO: Replace this reflection method with better solution respecting the encapsulation
-        // Try maybe a custom converter
-        $reflect = new \ReflectionClass($toUpdate);
-        $props = $reflect->getProperties();
-        foreach($props as $prop){
-            if($toUpdate->{$prop->getName()} !== NULL) {
-                $link->{$prop->getName()} = $prop->getValue($toUpdate);
-            }
-        }
-        $this->getEntityManager()->persist($link);
-        $this->getEntityManager()->flush();
+        $this->updateWith($link, $toUpdate);
         return $link;
     }
 

@@ -39,8 +39,8 @@ class CategoryController extends RestController
      * @View()
      * @return Category
      */
-    public function getCategoryAction(Category $link):Category{
-        return $link;
+    public function getCategoryAction(Category $entity):Category{
+        return $entity;
     }
 
     /**
@@ -58,8 +58,8 @@ class CategoryController extends RestController
      * @View()
      * @return Category
      */
-    public function  deleteLinkAction(Category $link):Category {
-        $this->getEntityManager()->remove($link);
+    public function  deleteCategoryAction(Category $entity):Category {
+        $this->getEntityManager()->remove($entity);
         $this->getEntityManager()->flush();
 
         return $link;
@@ -77,35 +77,10 @@ class CategoryController extends RestController
      *
      * @Post("/categories")
      */
-    public function postLinkAction(Category $link,  ConstraintViolationListInterface $validationErrors):Category{
-        $this->getEntityManager()->persist($link);
+    public function postCategoryAction(Category $entity,  ConstraintViolationListInterface $validationErrors):Category{
+        $this->getEntityManager()->persist($entity);
         $this->getEntityManager()->flush();
 
-        return $link;
+        return $entity;
     }
-
-
-    /**
-     *
-     * @View(statusCode=200)
-     * @ParamConverter("link", class="AppBundle:Category")
-     * @ParamConverter("toUpdate", converter="fos_rest.request_body", class="AppBundle:Category")
-     * @Patch("/links/{link}")
-     */
-    public function patchLinkAction(Category $link, Category $toUpdate):Category{
-
-        //TODO: Replace this reflection method with better solution respecting the encapsulation
-        // Try maybe a custom converter
-        $reflect = new \ReflectionClass($toUpdate);
-        $props = $reflect->getProperties();
-        foreach($props as $prop){
-            if($toUpdate->{$prop->getName()} !== NULL) {
-                $link->{$prop->getName()} = $prop->getValue($toUpdate);
-            }
-        }
-        $this->getEntityManager()->persist($link);
-        $this->getEntityManager()->flush();
-        return $link;
-    }
-
 }

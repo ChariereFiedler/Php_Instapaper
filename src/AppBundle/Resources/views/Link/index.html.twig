@@ -21,7 +21,7 @@
             $.ajax({
                 type: "DELETE",
                 contentType: "application/json",
-                url: "/api/links/"+id,
+                url: "/links/"+id,
                 processData: false,
                 dataType: "json",
                 success: function(result) {
@@ -48,7 +48,7 @@
             $.ajax({
                 type: "PATCH",
                 contentType: "application/json",
-                url: "/api/links/"+id,
+                url: "/links/"+id,
                 data: JSON.stringify(data),
                 processData: false,
                 dataType: "json"
@@ -69,7 +69,7 @@
             $.ajax({
                 type: "PATCH",
                 contentType: "application/json",
-                url: "/api/links/"+id,
+                url: "/links/"+id,
                 data: JSON.stringify(data),
                 processData: false,
                 dataType: "json"
