@@ -36,7 +36,7 @@ class CategoryController extends RestController
 
     /**
      * @param Category $Category
-     * @View()
+     * @View(template="AppBundle:Category:show.html.twig")
      * @return Category
      */
     public function getCategoryAction(Category $entity):Category{
@@ -45,12 +45,11 @@ class CategoryController extends RestController
 
     /**
      * @return Response
-     * @View(template="AppBundle:Link:index.html.twig")
+     * @View(template="AppBundle:Category:index.html.twig")
      */
     public function getCategoriesAction(){
         return $this->getRepository()->findAll();
     }
-
 
 
     /**
@@ -62,25 +61,22 @@ class CategoryController extends RestController
         $this->getEntityManager()->remove($entity);
         $this->getEntityManager()->flush();
 
-        return $link;
+        return $entity;
     }
 
 
     //TODO: manage correctly the status code
     /**
-     * @param Category $link
-     * @param ConstraintViolationListInterface $validationErrors
+     * @param Category $entity
      * @return Category
-     * @internal param $C
      * @View(statusCode=200)
-     * @ParamConverter("link", converter="fos_rest.request_body", class="AppBundle:Category")
+     * @ParamConverter("entity", converter="fos_rest.request_body", class="AppBundle\Entity\Category")
      *
      * @Post("/categories")
      */
-    public function postCategoryAction(Category $entity,  ConstraintViolationListInterface $validationErrors):Category{
+    public function postCategoryAction(Category $entity):Category{
         $this->getEntityManager()->persist($entity);
         $this->getEntityManager()->flush();
-
         return $entity;
     }
 }

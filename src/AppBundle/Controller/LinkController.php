@@ -90,7 +90,6 @@ class LinkController extends RestController
      * @param Link $link
      * @param ConstraintViolationListInterface $validationErrors
      * @return Link
-     * @internal param $C
      * @View(statusCode=200)
      * @ParamConverter("link", converter="fos_rest.request_body", class="AppBundle\Entity\Link")
      *
