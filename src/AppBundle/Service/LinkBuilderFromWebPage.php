@@ -28,13 +28,30 @@ class LinkBuilderFromWebPage {
                 $client = new Client();
                 $crawler = $client->request("GET", $link->getUrl());
 
-                $title = $crawler->filter("h2")->first()->text();
+                $title = $crawler->filter("title")->first()->text();
 
                 $converter = new CssSelectorConverter();
                 $content = $crawler->filterXPath("//div[contains(@class, 'content')]");
                 if($content->count() > 0) {
-                    $content = $content->first()->html();
-                    $link->setContent($content);
+
+                    $nb = 0;
+                    $actualContent = NULL;
+
+                    for ($i = 0 ; $i < $content->count() ; $i++) {
+                        if (strlen($content->eq($i)->html()) > $nb) {
+                            $nb = strlen($content->eq($i)->html());
+                            $actualContent = $content->eq($i);
+                        }
+                    }
+
+                    $link->setContent($actualContent->html());
+                    $link->setResume(substr(strip_tags ( $actualContent->html()), 0, 500)." ...");
+
+                    $urlImg = $actualContent->filterXPath("//img/@src");
+
+                    if($urlImg->count() > 0) {
+                        $link->setImgUrl($urlImg->first()->html());
+                    }
                 }
 
 

@@ -41,9 +41,23 @@ class Link
     /**
      * @var string
      *
+     * @ORM\Column(name="Resume", type="text", nullable=true)
+     */
+    public $resume;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="Url", type="string", length=500)
      */
     public $url;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ImgUrl", type="string", length=500, options={"default"=""})
+     */
+    public $imgUrl="";
 
     /**
      * @var bool
@@ -137,6 +151,30 @@ class Link
     }
 
     /**
+     * Set resume
+     *
+     * @param string $resume
+     *
+     * @return Link
+     */
+    public function setResume(string $resume):Link
+    {
+        $this->resume = $resume;
+
+        return $this;
+    }
+
+    /**
+     * Get resume
+     *
+     * @return string
+     */
+    public function getResume()
+    {
+        return $this->resume;
+    }
+
+    /**
      * Set link
      *
      * @param string $url
@@ -158,6 +196,31 @@ class Link
     public function getUrl():string
     {
         return $this->url;
+    }
+
+
+    /**
+     * Set imgUrl
+     *
+     * @param string imgUrl
+     *
+     * @return Link
+     */
+    public function setImgUrl(string $imgUrl):Link
+    {
+        $this->imgUrl = $imgUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get imgUrl
+     *
+     * @return string
+     */
+    public function getImgUrl():string
+    {
+        return $this->imgUrl;
     }
 
     /**
