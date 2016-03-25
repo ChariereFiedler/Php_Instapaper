@@ -2,9 +2,8 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Link;
-use AppBundle\Form\NewLinkType;
-use AppBundle\Repository\LinkRepository;
+use AppBundle\Entity\Category;
+use AppBundle\Form\NewCategoryType;
 use Doctrine\ORM\EntityManager;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations\View;
@@ -16,30 +15,31 @@ use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 
-class LinkController extends RestController
+class CategoryController extends RestController
 {
 
     public function getTargetedClass():string{
-        return "AppBundle:Link";
+        return "AppBundle:Category";
     }
 
+
     /**
-     * @Get("/links/create", name="links_create")
-     * @View(template="AppBundle:Link:new.html.twig", templateVar="form")
-     * @return Link
+     * @Get("/categories/create", name="categories_create")
+     * @View(template="AppBundle:Category:new.html.twig", templateVar="form")
+     * @return Category
      *
      */
-    public function createLinkAction()
+    public function createCategoryAction()
     {
-        return $this->createFormAndView(NewLinkType::class);
+        return $this->createFormAndView(NewCategoryType::class);
     }
 
     /**
-     * @param Link $link
+     * @param Category $Category
      * @View()
-     * @return Link
+     * @return Category
      */
-    public function getLinkAction(Link $link):Link{
+    public function getCategoryAction(Category $link):Category{
         return $link;
     }
 
@@ -47,58 +47,39 @@ class LinkController extends RestController
      * @return Response
      * @View(template="AppBundle:Link:index.html.twig")
      */
-    public function getLinksAction(){
+    public function getCategoriesAction(){
         return $this->getRepository()->findAll();
     }
 
 
 
     /**
-     * @param Link $link
+     * @param Category $link
      * @View()
-     * @return Link
+     * @return Category
      */
-    public function  deleteLinkAction(Link $link):Link {
+    public function  deleteLinkAction(Category $link):Category {
         $this->getEntityManager()->remove($link);
         $this->getEntityManager()->flush();
 
         return $link;
     }
 
-    /**
-     * @param Link $link
-     * @return Response
-     * @View(statusCode=201, template="")
-     */
-    //TODO: the current copy function not working
-    public function copyLinkAction(Link $link) {
-        $view = null;
-
-        if(is_null($link)) {
-            return $this->handleView($this->view(null, Response::HTTP_BAD_REQUEST));
-        }
-
-        $new = $this->getEntityManager()->copy($link, false);
-        $this->getEntityManager()->persist($new);
-        $this->getEntityManager()->flush();
-
-        return $new;
-    }
 
     //TODO: manage correctly the status code
     /**
-     * @param Link $link
+     * @param Category $link
      * @param ConstraintViolationListInterface $validationErrors
-     * @return Link
+     * @return Category
      * @internal param $C
      * @View(statusCode=200)
-     * @ParamConverter("link", converter="fos_rest.request_body", class="AppBundle\Entity\Link")
+     * @ParamConverter("link", converter="fos_rest.request_body", class="AppBundle:Category")
      *
-     * @Post("/links")
+     * @Post("/categories")
      */
-    public function postLinkAction(Link $link,  ConstraintViolationListInterface $validationErrors):Link{
-            $this->getEntityManager()->persist($link);
-            $this->getEntityManager()->flush();
+    public function postLinkAction(Category $link,  ConstraintViolationListInterface $validationErrors):Category{
+        $this->getEntityManager()->persist($link);
+        $this->getEntityManager()->flush();
 
         return $link;
     }
@@ -107,11 +88,11 @@ class LinkController extends RestController
     /**
      *
      * @View(statusCode=200)
-     * @ParamConverter("link", class="AppBundle:Link")
-     * @ParamConverter("toUpdate", converter="fos_rest.request_body", class="AppBundle\Entity\Link")
+     * @ParamConverter("link", class="AppBundle:Category")
+     * @ParamConverter("toUpdate", converter="fos_rest.request_body", class="AppBundle:Category")
      * @Patch("/links/{link}")
      */
-    public function patchLinkAction(Link $link, Link $toUpdate):Link{
+    public function patchLinkAction(Category $link, Category $toUpdate):Category{
 
         //TODO: Replace this reflection method with better solution respecting the encapsulation
         // Try maybe a custom converter

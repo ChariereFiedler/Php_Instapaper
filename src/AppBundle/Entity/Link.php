@@ -71,6 +71,12 @@ class Link
      */
     public $built=false;
 
+    /**
+     * @var bool
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="links")
+     */
+    public $category;
+
 
     /**
      * Get id
@@ -248,5 +254,69 @@ class Link
     public function isBuilt():bool
     {
         return $this->built;
+    }
+
+    /**
+     * Get read
+     *
+     * @return boolean
+     */
+    public function getRead()
+    {
+        return $this->read;
+    }
+
+    /**
+     * Get archived
+     *
+     * @return boolean
+     */
+    public function getArchived()
+    {
+        return $this->archived;
+    }
+
+    /**
+     * Get liked
+     *
+     * @return boolean
+     */
+    public function getLiked()
+    {
+        return $this->liked;
+    }
+
+    /**
+     * Get built
+     *
+     * @return boolean
+     */
+    public function getBuilt()
+    {
+        return $this->built;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \AppBundle\Entity\Category $category
+     *
+     * @return Link
+     */
+    public function setCategory(\AppBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \AppBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }

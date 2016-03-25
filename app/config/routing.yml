@@ -4,7 +4,12 @@ app:
 
 links_api:
     type:   rest
-    prefix: api
     resource: AppBundle\Controller\LinkController
+    defaults:
+        _format: json
+
+categories_api:
+    type:   rest
+    resource: AppBundle\Controller\CategoryController
     defaults:
         _format: json
