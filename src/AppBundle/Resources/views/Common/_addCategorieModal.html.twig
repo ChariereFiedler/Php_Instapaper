@@ -1,5 +1,5 @@
 <div id="addCategorieModal" class="modal fade" role="dialog">
-    <form role="form" id="newLink">
+    <form role="form" id="newCategory">
 
         <div class="modal-dialog">
             <!-- Modal content-->
@@ -10,9 +10,9 @@
                 </div>
                 <div class="modal-body">
 
-                    <div class="form-group" id="newUrlFormGroup">
+                    <div class="form-group" id="newCategoryFormGroup">
                         <label>Name</label>
-                        <input id="newUrl" class="form-control">
+                        <input id="newCategory" class="form-control">
 
                         <p class="help-block error-block"><i class="fa fa-exclamation-triangle"></i> Can't be empty</p>
                     </div>
@@ -25,3 +25,29 @@
         </div>
     </form>
 </div>
+
+<script type="text/javascript">
+    $("form#newCategory").submit(function(){
+        //Check if the url respects the good format
+        var that = this;
+        var data = {"name" : $("input#newCategory").val()};
+        console.dir(data);
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "/categories",
+            data: JSON.stringify(data),
+            processData: false,
+            dataType: "json",
+            success: function(result) {
+                window.location.replace("{{path('get_links')}}");
+            },
+            error: function(result) {
+            }
+        });
+        $('#addALinkModal').modal('hide')
+
+
+        return false;
+    });
+</script>

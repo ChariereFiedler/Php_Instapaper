@@ -1,0 +1,15 @@
+{% extends "AppBundle::template.html.twig" %}
+
+{% block javascript %}
+    {{ parent() }}
+{% endblock %}
+
+
+{% block content %}
+    <div class="row">
+        {% for category in data %}
+            {% include "AppBundle:Category:_row.html.twig" with {'category' : category} only %}
+        {% endfor %}
+    </div>
+
+{% endblock %}

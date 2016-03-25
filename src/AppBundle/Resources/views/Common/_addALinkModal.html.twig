@@ -28,6 +28,7 @@
 
 <script type="text/javascript">
     $("form#newLink").submit(function(){
+        //Check if the url respects the good format
         var regex = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
         if (regex.test($("input#newUrl").val())) {
             var that = this;
@@ -41,6 +42,7 @@
                 processData: false,
                 dataType: "json",
                 success: function(result) {
+                    window.location.replace("{{path('get_links')}}");
                 },
                 error: function(result) {
                     $("#newUrlFormGroup").addClass("has-error");

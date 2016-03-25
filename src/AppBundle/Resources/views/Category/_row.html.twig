@@ -1,0 +1,9 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <a class="headerRow"href="{{ path('get_category', {'entity': category.id}) }}" > {{ category.name }}</a>
+    </div>
+    <div class="panel-body">
+
+        {{ category.links | length }} element(s)
+    </div>
+</div>
