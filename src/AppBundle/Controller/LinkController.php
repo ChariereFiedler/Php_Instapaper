@@ -12,21 +12,27 @@ use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\Controller\Annotations\Post;
 use FOS\RestBundle\Controller\Annotations\Delete;
 use FOS\RestBundle\Controller\Annotations\Patch;
+use Symfony\Component\Form\FormView;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\Intl\Exception\NotImplementedException;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 
 class LinkController extends RestController
 {
 
+    /**
+     * {@inheritdoc}
+     */
     public function getTargetedClass():string{
         return "AppBundle:Link";
     }
 
     /**
+     * Display a form view with Symfony form builder
      * @Get("/links/create", name="links_create")
      * @View(template="AppBundle:Link:new.html.twig", templateVar="form")
-     * @return Link
+     * @return FormView
      *
      */
     public function createLinkAction()
@@ -35,6 +41,7 @@ class LinkController extends RestController
     }
 
     /**
+     * Get a specific link
      * @param Link $link
      * @View(template="AppBundle:Link:show.html.twig")
      * @return Link
@@ -44,15 +51,18 @@ class LinkController extends RestController
     }
 
     /**
-     * @return Response
+     * Get all the links which are not archived
      * @View(template="AppBundle:Link:index.html.twig")
+     * @return Link[]
      */
     public function getLinksAction(){
         return $this->getRepository()->findBy(array("archived" => false));
     }
 
     /**
+     * Get all the liked links
      * @Get("/links/liked", name="get_liked_links")
+     * @return Link[]
      * @View(template="AppBundle:Link:liked.html.twig")
      */
     public function getLikedLinksAction()
@@ -61,6 +71,7 @@ class LinkController extends RestController
     }
 
     /**
+     * Get all the archived links
      * @Get("/links/archived", name="get_archived_links")
      * @View(template="AppBundle:Link:archive.html.twig")
      */
@@ -72,9 +83,10 @@ class LinkController extends RestController
 
 
     /**
+     * Delete a specific Link
      * @param Link $link
      * @View()
-     * @return Link
+     * @return Link the deleted link
      */
     public function  deleteLinkAction(Link $link):Link {
         $this->getEntityManager()->remove($link);
@@ -83,13 +95,14 @@ class LinkController extends RestController
         return $link;
     }
 
-    /**
+    /** Currently not implemented because its requires a deep copy strategy
      * @param Link $link
      * @return Response
      * @View(statusCode=201, template="")
      */
     //TODO: the current copy function not working
     public function copyLinkAction(Link $link) {
+        return new NotImplementedException();
         $view = null;
 
         if(is_null($link)) {
@@ -103,15 +116,15 @@ class LinkController extends RestController
         return $new;
     }
 
-    //TODO: manage correctly the status code
+    //TODO use correctly the constraints validation
     /**
      * @param Link $link
      * @param ConstraintViolationListInterface $validationErrors
-     * @return Link
      * @View(statusCode=200)
      * @ParamConverter("link", converter="fos_rest.request_body", class="AppBundle\Entity\Link")
      *
      * @Post("/links")
+     * @return Link
      */
     public function postLinkAction(Link $link,  ConstraintViolationListInterface $validationErrors):Link{
             $this->getEntityManager()->persist($link);
@@ -124,6 +137,7 @@ class LinkController extends RestController
     }
 
 
+    //TODO refactor to implement a correct patch action
     /**
      *
      * @View(statusCode=200)

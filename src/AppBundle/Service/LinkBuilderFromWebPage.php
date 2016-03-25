@@ -10,12 +10,21 @@ use Symfony\Component\CssSelector\CssSelectorConverter;
 class LinkBuilderFromWebPage {
 
 
+    /**
+     * Build a list of links
+     * @param array $links The links list to build
+     */
     public function buildAll(array $links) {
         foreach($links as $link ){
             $this->build($link);
         }
     }
 
+    /**
+     * Build the targeted link from its URL : its content and its title is extracted from a targeted remote article
+     * @param Link $link The link to build
+     * @return Link
+     */
     public function build(Link &$link):Link
     {
             $Essence = new Essence();

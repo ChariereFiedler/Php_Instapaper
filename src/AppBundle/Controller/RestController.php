@@ -12,6 +12,9 @@ abstract class RestController extends FOSRestController
     protected $clazz;
 
 
+    /**
+     * @return string the entity class targeted
+     */
     public function getTargetedClass():string{
         return "";
     }
@@ -32,8 +35,7 @@ abstract class RestController extends FOSRestController
     //TODO: Externalize to a dedicated service, maybe a manager
     public function updateWith($origin, $partial){
 
-        //TODO: Replace this reflection method with better solution respecting the encapsulation
-        // Try maybe a custom converter
+        //TODO: Replace this reflection method with better solution respecting the encapsulation, Try maybe a custom converter
         $reflect = new \ReflectionClass($partial);
         $props = $reflect->getProperties();
         foreach($props as $prop){
