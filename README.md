@@ -52,7 +52,7 @@ Selon le système d'exploitation hôte de cette application, une tâche CRON peu
 
     `php bin/console app:build_links`
 
-Le service `AppBundle:Service:LinkBuilderFromWebPage`
+Le service `AppBundle:Service:LinkBuilderFromWebPage` est dédié à cette construction et s'appuie sur des outils de navigation web et de parcours de DOM.
 
 ## Application graphique
 
