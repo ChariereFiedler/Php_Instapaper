@@ -27,14 +27,14 @@ class Link
     /**
      * @var string
      *
-     * @ORM\Column(name="Title", type="string", length=255)
+     * @ORM\Column(name="Title", type="string", length=255, nullable=true)
      */
     private $title;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Content", type="text")
+     * @ORM\Column(name="Content", type="text", nullable=true)
      */
     private $content;
 
@@ -50,14 +50,14 @@ class Link
      *
      * @ORM\Column(name="Readed", type="boolean")
      */
-    private $readed;
+    private $readed=false;
 
     /**
      * @var bool
      *
      * @ORM\Column(name="Archived", type="boolean")
      */
-    private $archived;
+    private $archived=false;
 
 
     /**
@@ -69,6 +69,9 @@ class Link
     {
         return $this->id;
     }
+
+
+
 
     /**
      * Set title

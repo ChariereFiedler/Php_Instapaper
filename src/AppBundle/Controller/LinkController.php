@@ -27,12 +27,12 @@ class LinkController extends  FOSRestController
 
     /**
      * @Get("/links/create", name="links_create")
-     * @View(template="AppBundle:Link:new.html.twig")
+     * @View(template="AppBundle:Link:new.html.twig", templateVar="form")
      * @return Link
      *
      */
     public function createLinkAction(){
-        $form = $this->createForm("AppBundle/Form/NewLinkType");
+        $form = $this->createForm(NewLinkType::class);
 
         return $form->createView();
     }
@@ -100,12 +100,9 @@ class LinkController extends  FOSRestController
      * @Post("/links")
      */
     public function postLinkAction(Link $link,  ConstraintViolationListInterface $validationErrors){
-        if(count($validationErrors) == 0) {
             $this->getEntityManager()->persist($link);
             $this->getEntityManager()->flush();
-        } else {
 
-        }
         return $link;
     }
 
