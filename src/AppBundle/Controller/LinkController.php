@@ -97,6 +97,10 @@ class LinkController extends RestController
      */
     public function postLinkAction(Link $link,  ConstraintViolationListInterface $validationErrors):Link{
             $this->getEntityManager()->persist($link);
+
+            $builder = $this->get('link_builder');
+            $builder->build($link);
+
             $this->getEntityManager()->flush();
         return $link;
     }
