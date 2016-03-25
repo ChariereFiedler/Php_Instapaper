@@ -16,14 +16,15 @@
         </div>
         <div class="panel-body">
             <div class="row">
-                <div class="col-lg-9">
-                    <p>{{ link.content | raw }}</p>
+                <div class="col-lg-7">
+                    <p>{{ link.resume | raw }}</p>
                 </div>
-                <div class="col-lg-2">
-                    {% if link.imgUrl is defined%}
-                        <img src="{{imgUrl}}"/>
-                    {% endif %}
+                <div class="col-lg-1">
                 </div>
+                {% if link.imgUrl is defined%}
+                <div class="col-lg-3 articleImg" style="background: url({{link.imgUrl}}) no-repeat; background-size:cover;">
+                </div>
+                {% endif %}
             </div>
         </div>
         <div class="panel-footer">
