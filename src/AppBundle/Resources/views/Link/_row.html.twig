@@ -17,7 +17,7 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-lg-9">
-                    <p>Resume</p>
+                    <p>{{ link.content | raw }}</p>
                 </div>
                 <div class="col-lg-2">
                     {% if link.imgUrl is defined%}
