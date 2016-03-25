@@ -36,7 +36,7 @@ class LinkController extends RestController
 
     /**
      * @param Link $link
-     * @View()
+     * @View(template="AppBundle:Link:show.html.twig")
      * @return Link
      */
     public function getLinkAction(Link $link):Link{
