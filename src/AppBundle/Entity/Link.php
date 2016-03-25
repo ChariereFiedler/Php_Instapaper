@@ -55,9 +55,9 @@ class Link
     /**
      * @var string
      *
-     * @ORM\Column(name="ImgUrl", type="string", length=500, options={"default"=""})
+     * @ORM\Column(name="ImgUrl", type="string", length=500,  nullable=true)
      */
-    public $imgUrl="";
+    public $imgUrl;
 
     /**
      * @var bool

@@ -1,0 +1,22 @@
+{% extends "AppBundle::templateArticle.html.twig" %}
+
+{% block javascript %}
+    {{ parent() }}
+
+    {% if link.liked %}
+        <script type="text/javascript">
+            $("body").addClass("liked");
+        </script>
+    {% endif %}
+{% endblock %}
+
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">{{link.title}}</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    {{link.content | raw}}
+{% endblock %}

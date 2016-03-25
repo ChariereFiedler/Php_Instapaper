@@ -37,7 +37,11 @@
                     <i class="fa fa-folder-o fa-lg"></i>
                 </li>
                 <li>
-                    <i class="fa fa-archive fa-lg"></i>
+                    {% if link.archived %}
+                        <restore-link data-id="{{ link.id }}" class="fa fa-upload fa-lg" data-target="link"></restore-link>
+                    {% else %}
+                        <archive-link data-id="{{ link.id }}" class="fa fa-archive fa-lg" data-target="link"></archive-link>
+                    {% endif %}
                 </li>
                 <li>
                     <delete-link data-id="{{ link.id }}" class="deleteLink fa fa-trash-o fa-lg" data-target="link"></delete-link>
