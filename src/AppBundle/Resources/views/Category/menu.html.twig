@@ -1,0 +1,6 @@
+{% for entity in data %}
+<li>
+    <a href="{{ path("get_category", {"entity": entity.id}) }}"><i class="fa fa-fw fa-folder"></i> {{  entity.name }}</a>
+</li>
+
+{% endfor %}

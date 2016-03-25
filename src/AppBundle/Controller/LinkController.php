@@ -48,7 +48,25 @@ class LinkController extends RestController
      * @View(template="AppBundle:Link:index.html.twig")
      */
     public function getLinksAction(){
-        return $this->getRepository()->findAll();
+        return $this->getRepository()->findBy(array("archived" => false));
+    }
+
+    /**
+     * @Get("/links/liked", name="get_liked_links")
+     * @View(template="AppBundle:Link:index.html.twig")
+     */
+    public function getLikedLinksAction()
+    {
+        return $this->getRepository()->findBy(array("liked" => false));
+    }
+
+    /**
+     * @Get("/links/archived", name="get_archived_links")
+     * @View(template="AppBundle:Link:index.html.twig")
+     */
+    public function getArchivedLinksAction()
+    {
+        return $this->getRepository()->findBy(array("archived" => true));
     }
 
 

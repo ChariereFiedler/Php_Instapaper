@@ -51,6 +51,13 @@ class CategoryController extends RestController
         return $this->getRepository()->findAll();
     }
 
+    /**
+     * @Get("/categories/menu")
+     * @View(template="AppBundle:Category:menu.html.twig")
+     */
+    public function getMenuAction(){
+        return $this->getRepository()->findAll();
+    }
 
     /**
      * @param Category $link
