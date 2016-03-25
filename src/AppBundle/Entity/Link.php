@@ -48,16 +48,22 @@ class Link
     /**
      * @var bool
      *
-     * @ORM\Column(name="Readed", type="boolean")
+     * @ORM\Column(name="Readed", type="boolean", options={"default"=false})
      */
     private $readed=false;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="Archived", type="boolean")
+     * @ORM\Column(name="Archived", type="boolean", options={"default"=false})
      */
     private $archived=false;
+
+    /**
+     * @var bool
+     * @ORM\Column(name="Liked", type="boolean", options={"default"=false})
+     */
+    private $liked=true;
 
 
     /**
@@ -192,5 +198,28 @@ class Link
     {
         return $this->archived;
     }
-}
 
+    /**
+     * Set liked
+     *
+     * @param boolean $liked
+     *
+     * @return Link
+     */
+    public function setLiked($liked)
+    {
+        $this->liked = $liked;
+
+        return $this;
+    }
+
+    /**
+     * Get liked
+     *
+     * @return boolean
+     */
+    public function getLiked()
+    {
+        return $this->liked;
+    }
+}
