@@ -46,11 +46,13 @@ casper.test.begin('Test xml doesn\'t return json ', 1, function suite(test) {
 
 var expectNbData;
 
-casper.test.begin('Test add link', 1, function suite(test) {
+casper.test.begin('add A link', 1, function suite(test) {
 	
 	var site = 'http://127.0.0.1:8000/api/links.json';
 	
-    casper.start(site, function() {
+    casper.start(site)
+	
+	casper.then(function() {
 		try {
 			var json_string = JSON.parse(this.getPageContent());
 			expectNbData = json_string.length+1;

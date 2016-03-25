@@ -57,6 +57,14 @@ div.popUp .form-group.has-error .error-block {
 	display: block;
 }
 
+:not(.has-error) .error-block {
+	display: none;
+}
+
+.has-error .error-block {
+	display: block;
+}
+
 .nav a:hover {
 	cursor: pointer;
 }

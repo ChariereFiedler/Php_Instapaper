@@ -1,49 +1,59 @@
-<form role="form" id="newLink">
+<div id="addALinkModal" class="modal fade" role="dialog">
+    <form role="form" id="newLink">
 
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Add a Link</h4>
-            </div>
-            <div class="modal-body">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add a Link</h4>
+                </div>
+                <div class="modal-body">
 
-                    <div class="form-group" id="newUrlFormGroup">
-                        <label>URL</label>
-                        <input id="newUrl" class="form-control">
+                        <div class="form-group" id="newUrlFormGroup">
+                            <label>URL</label>
+                            <input id="newUrl" class="form-control">
 
-                        <p class="help-block error-block"><i class="fa fa-exclamation-triangle"></i> Not a valid URL</p>
-                    </div>
+                            <p class="help-block error-block"><i class="fa fa-exclamation-triangle"></i> Not a valid URL</p>
+                        </div>
 
-            </div>
-            <div class="modal-footer">
-                <input type="submit" class="btn btn-success"/>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-success"/>
+                </div>
             </div>
         </div>
-    </div>
-</form>
+    </form>
+</div>
 
 <script type="text/javascript">
     $("form#newLink").submit(function(){
-        alert("Posted !");
-        var that = this;
-        var data = {"url" : $("input#newUrl").val()};
-        console.dir(data);
-        $.ajax({
-            type: "POST",
-            contentType: "application/json",
-            url: "/api/links",
-            data: JSON.stringify(data),
-            processData: false,
-            dataType: "json",
-            success: function(result) {
-                console.log("Result");
-            },
-            error: function(result) {
-                $("#newUrlFormGroup").addClass("has-error");
-            }
-        });
+        var regex = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+        if (regex.test($("input#newUrl").val())) {
+            var that = this;
+            var data = {"url" : $("input#newUrl").val()};
+            console.dir(data);
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                url: "/api/links",
+                data: JSON.stringify(data),
+                processData: false,
+                dataType: "json",
+                success: function(result) {
+                    console.log("Result");
+                },
+                error: function(result) {
+                    $("#newUrlFormGroup").addClass("has-error");
+                }
+            });
+            $("input#newUrl").val("")
+            $("#newUrlFormGroup").removeClass("has-error");
+            $('#addALinkModal').modal('hide')
+        }
+        else {
+            $("#newUrlFormGroup").addClass("has-error");
+        }
 
         return false;
     });
