@@ -53,11 +53,24 @@ class LinkController extends  FOSRestController
         return $this->getRepository()->findAll();
     }
 
+
+    /**
+     * @param Link $link
+     * @View()
+     * @Delete("/links")
+     * @return Link
+     */
+    public function  deleteLinkAction(Link $link):Link {
+        $this->getEntityManager()->remove($link);
+        $this->getEntityManager()->flush();
+
+        return $link;
+    }
+
     /**
      * @param Link $link
      * @return Response
      * @View(statusCode=201, template="")
-     *
      */
     //TODO: the current copy function not working
     public function copyLinkAction(Link $link) {
@@ -94,4 +107,5 @@ class LinkController extends  FOSRestController
         }
         return $link;
     }
+
 }
