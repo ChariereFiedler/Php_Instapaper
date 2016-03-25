@@ -1,7 +1,13 @@
 <!-- Navigation -->
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
-        <a class="navbar-brand" href="index.html">ReadIt Later</a>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="{{ path("get_links") }}">ReadIt Later</a>
     </div>
     <!-- /.navbar-header -->
 
@@ -21,4 +27,44 @@
         </li>
         <!-- /.dropdown -->
     </ul>
+
+    <div class="navbar-default sidebar" role="navigation">
+        <div class="sidebar-nav navbar-collapse">
+            <ul class="nav" id="side-menu">
+                <li class="sidebar-search">
+                    <div class="input-group custom-search-form">
+                        <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                    </div>
+                    <!-- /input-group -->
+                </li>
+                <li class="active">
+                    <a href="links"><i class="fa fa-fw fa-home"></i> Home</a>
+                </li>
+                <li>
+                    <a href="liked"><i class="fa fa-fw fa-heart"></i> Liked</a>
+                </li>
+                <li>
+                    <a href="archive"><i class="fa fa-fw fa-archive"></i> Archive</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-folder fa-fw"></i> Categories<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="{{ path('get_categories') }}"><i class="fa fa-th-list"></i> All categories</a>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#addCategorieModal"><i class="fa fa-plus-circle"></i> Add a categorie</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+            </ul>
+        </div>
+        <!-- /.sidebar-collapse -->
+    </div>
 </nav>

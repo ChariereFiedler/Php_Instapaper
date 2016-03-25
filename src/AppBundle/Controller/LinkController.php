@@ -57,7 +57,7 @@ class LinkController extends RestController
      */
     public function getLikedLinksAction()
     {
-        return $this->getRepository()->findBy(array("liked" => false));
+        return $this->getRepository()->findBy(array("liked" => true));
     }
 
     /**

@@ -53,13 +53,43 @@
 </script>
 
 <script type="text/javascript">
-    $("like-link").click(function(){
+    $("delete-link").click(function(){
         var that = this;
         var id = $(that).data("id");
 
-        var data = [
-            { "op": "replace", "path": "/liked", "value": true },
-        ];
+        var target = $(that).data("target");
+        if(target) {
+            $(that).parents("div[name="+target+"]").slideUp();
+        }
+
+        $.ajax({
+            type: "DELETE",
+            contentType: "application/json",
+            url: "/links/"+id,
+            processData: false,
+            dataType: "json",
+            success: function(result) {
+
+            },
+            error: function(result) {
+                if(target) {
+                    $(that).parents("div[name="+target+"]").slideDown();
+                }
+            }
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $("like-link").click(function(){
+        var that = this;
+        var id = $(that).data("id");
+        var target = $(that).data("target");
+
+        $(that).hide();
+        $(that).parent("li").children("unlike-link").show();
+
+        var data = {'liked' : true};
         console.dir(data);
         $.ajax({
             type: "PATCH",
@@ -67,7 +97,11 @@
             url: "/links/"+id,
             data: JSON.stringify(data),
             processData: false,
-            dataType: "json"
+            dataType: "json",
+            error: function(result) {
+                $(that).parent("li").children("unlike-link").hide();
+                $(that).show();
+            }
         });
     });
 </script>
@@ -77,9 +111,10 @@
         var that = this;
         var id = $(that).data("id");
 
-        var data = [
-            { "op": "replace", "path": "/liked", "value": false },
-        ];
+        $(that).hide();
+        $(that).parent("li").children("like-link").show();
+
+        var data = {'liked' : false};
 
         console.dir(data);
         $.ajax({
@@ -88,7 +123,72 @@
             url: "/links/"+id,
             data: JSON.stringify(data),
             processData: false,
-            dataType: "json"
+            dataType: "json",
+            error: function(result) {
+                $(that).parent("li").children("like-link").hide();
+                $(that).show();
+            }
+        });
+    });
+</script>
+
+
+<script type="text/javascript">
+    $("archive-link").click(function(){
+        var that = this;
+        var id = $(that).data("id");
+
+        var target = $(that).data("target");
+        if(target) {
+            $(that).parents("div[name="+target+"]").slideUp();
+        }
+
+        var data = {'archived' : true};
+        console.dir(data);
+        $.ajax({
+            type: "PATCH",
+            contentType: "application/json",
+            url: "/links/"+id,
+            data: JSON.stringify(data),
+            processData: false,
+            dataType: "json",
+            succes: function(result) {
+            },
+            error: function(result) {
+                if(target) {
+                    $(that).parents("div[name="+target+"]").slideDown();
+                }
+            }
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $("restore-link").click(function(){
+        var that = this;
+        var id = $(that).data("id");
+
+        var target = $(that).data("target");
+        if(target) {
+            $(that).parents("div[name="+target+"]").slideUp();
+        }
+
+        var data = {'archived' : false};
+        console.dir(data);
+        $.ajax({
+            type: "PATCH",
+            contentType: "application/json",
+            url: "/links/"+id,
+            data: JSON.stringify(data),
+            processData: false,
+            dataType: "json",
+            succes: function(result) {
+            },
+            error: function(result) {
+                if(target) {
+                    $(that).parents("div[name="+target+"]").slideDown();
+                }
+            }
         });
     });
 </script>
