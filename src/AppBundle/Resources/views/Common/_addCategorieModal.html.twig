@@ -30,22 +30,29 @@
     $("form#newCategory").submit(function(){
         //Check if the url respects the good format
         var that = this;
-        var data = {"name" : $("input#newCategory").val()};
-        console.dir(data);
-        $.ajax({
-            type: "POST",
-            contentType: "application/json",
-            url: "/categories",
-            data: JSON.stringify(data),
-            processData: false,
-            dataType: "json",
-            success: function(result) {
-                window.location.replace("{{path('get_links')}}");
-            },
-            error: function(result) {
-            }
-        });
-        $('#addALinkModal').modal('hide')
+
+        if ($("input#newCategory").val()) {
+            var data = {"name" : $("input#newCategory").val()};
+            console.dir(data);
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                url: "/categories",
+                data: JSON.stringify(data),
+                processData: false,
+                dataType: "json",
+                success: function(result) {
+                    window.location.replace("{{path('get_links')}}");
+                },
+                error: function(result) {
+                }
+            });
+            $('#addALinkModal').modal('hide')
+        }
+        else {
+            $("#newCategoryFormGroup").addClass("has-error");
+        }
+
 
 
         return false;

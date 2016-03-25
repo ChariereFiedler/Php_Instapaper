@@ -6,5 +6,5 @@
 
 
 {% block content %}
-    {% include "AppBundle:Common:_contentListRow.html.twig" with {'data' : data.links, 'icon' : 'fa-folder', 'title' : data.name, 'editable' : false} only %}
+    {% include "AppBundle:Common:_contentListRow.html.twig" with {'data' : data.links, 'icon' : 'fa-folder', 'title' : data.name, 'editable' : true} only %}
 {% endblock %}

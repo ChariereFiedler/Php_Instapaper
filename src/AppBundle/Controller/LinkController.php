@@ -53,7 +53,7 @@ class LinkController extends RestController
 
     /**
      * @Get("/links/liked", name="get_liked_links")
-     * @View(template="AppBundle:Link:index.html.twig")
+     * @View(template="AppBundle:Link:liked.html.twig")
      */
     public function getLikedLinksAction()
     {
@@ -62,7 +62,7 @@ class LinkController extends RestController
 
     /**
      * @Get("/links/archived", name="get_archived_links")
-     * @View(template="AppBundle:Link:index.html.twig")
+     * @View(template="AppBundle:Link:archive.html.twig")
      */
     public function getArchivedLinksAction()
     {

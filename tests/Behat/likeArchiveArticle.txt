@@ -1,0 +1,35 @@
+Feature:
+	Like, unlike article
+	Archive, restore article
+
+  Scenario: Like a article
+    Given I am on page "/links"
+    And I have "3" article on page "/links"
+    And I have "0" article on page "/liked"
+    When I like an article
+    And I have "3" article on page "/links"
+    And I have "1" article on page "/liked"
+
+  Scenario: Unlike a article
+    Given I am on page "/liked"
+    And I have "1" article on page "/liked"
+    And I have "3" article on page "/links"
+    When I unlike an article
+    And I have "0" article on page "/liked"
+    And I have "3" article on page "/links"
+
+  Scenario: Archive a article
+    Given I am on page "/links"
+    And I have "3" article on page "/links"
+    And I have "0" article on page "/archived"
+    When I archive an article
+    And I have "2" article on page "/links"
+    And I have "1" article on page "/archived"
+
+  Scenario: Restore a article
+    Given I am on page "/liked"
+    And I have "1" article on page "/archived"
+    And I have "2" article on page "/links"
+    When I restore an article
+    And I have "0" article on page "/archived"
+    And I have "3" article on page "/links"

@@ -6,7 +6,7 @@
     <div class="panel panel-primary">
         <div class="panel-heading">
             {% if link.url %}
-            <a class="headerRow" href="links/{{link.id}}">
+            <a class="headerRow" href="{{ path('get_link', {'link': link.id}) }}">
             {% endif %}
                 {{link.title}}
             {% if link.url %}

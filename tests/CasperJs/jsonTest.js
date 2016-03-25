@@ -2,7 +2,7 @@
 
 casper.test.begin('Test json return json', 1, function suite(test) {
 	
-	var site = 'http://127.0.0.1:8000/api/links.json';
+	var site = 'http://127.0.0.1:8000/links.json';
 	
     casper.start(site);
 
@@ -24,7 +24,7 @@ casper.test.begin('Test json return json', 1, function suite(test) {
 
 casper.test.begin('Test xml doesn\'t return json ', 1, function suite(test) {
 	
-	var site = 'http://127.0.0.1:8000/api/links.xml';
+	var site = 'http://127.0.0.1:8000/links.xml';
 	
     casper.start(site);
 
@@ -48,7 +48,7 @@ var expectNbData;
 
 casper.test.begin('add A link', 1, function suite(test) {
 	
-	var site = 'http://127.0.0.1:8000/api/links.json';
+	var site = 'http://127.0.0.1:8000/links.json';
 	
     casper.start(site)
 	
@@ -71,7 +71,7 @@ casper.test.begin('add A link', 1, function suite(test) {
 
 casper.test.begin('Test add link', 2, function suite(test) {
 	
-	var site = 'http://127.0.0.1:8000/api/links.json';
+	var site = 'http://127.0.0.1:8000/links.json';
 	var nbData;
 	
     casper.start(site);
@@ -79,11 +79,7 @@ casper.test.begin('Test add link', 2, function suite(test) {
 	casper.open(site, {
 	  method: 'POST',
 	  data: {
-				title: 'yoo',
-				content: 'foo',
-				url: 'bar',
-				readed: false,
-				archived: false
+				url: 'http://www.spi0n.com/ornithorynque-calins/',
 			},
 	  headers: {
 		'Content-Type': 'application/json'

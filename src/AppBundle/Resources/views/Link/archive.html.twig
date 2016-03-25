@@ -1,0 +1,10 @@
+{% extends "AppBundle::template.html.twig" %}
+
+{% block javascript %}
+    {{ parent() }}
+{% endblock %}
+
+
+{% block content %}
+    {% include "AppBundle:Common:_contentListRow.html.twig" with {'data' : data, 'icon' : 'fa-archive', 'title' : 'Archive', 'editable' : false} only %}
+{% endblock %}

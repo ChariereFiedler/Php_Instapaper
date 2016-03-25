@@ -53,34 +53,6 @@
 </script>
 
 <script type="text/javascript">
-    $("delete-link").click(function(){
-        var that = this;
-        var id = $(that).data("id");
-
-        var target = $(that).data("target");
-        if(target) {
-            $(that).parents("div[name="+target+"]").slideUp();
-        }
-
-        $.ajax({
-            type: "DELETE",
-            contentType: "application/json",
-            url: "/links/"+id,
-            processData: false,
-            dataType: "json",
-            success: function(result) {
-
-            },
-            error: function(result) {
-                if(target) {
-                    $(that).parents("div[name="+target+"]").slideDown();
-                }
-            }
-        });
-    });
-</script>
-
-<script type="text/javascript">
     $("like-link").click(function(){
         var that = this;
         var id = $(that).data("id");

@@ -1,0 +1,13 @@
+Feature: Manage Categories
+
+  Scenario: Add a categories
+    Given I am on page "/links"
+    And I have "1" categories
+    When I add a categories
+    Then I have "2" categories
+
+  Scenario: Delete a categories
+    Given I am on page "/links"
+    And I have "2" categories
+    When I delete a categories
+    Then I have "1" categories

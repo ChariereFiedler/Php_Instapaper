@@ -1,0 +1,13 @@
+Feature: Add and delete article
+
+  Scenario: Add an article
+    Given I am on page "/links"
+    And I have "3" article
+    When I add an article
+    Then I have "4" article
+
+  Scenario: Delete an article
+    Given I am on page "/links"
+    And I have "3" article
+    When I delete an article
+    Then I have "2" article
