@@ -49,6 +49,7 @@
                         <li>
                             <a href="{{ path('get_categories') }}"><i class="fa fa-th-list"></i> All categories</a>
                         </li>
+                        {{ render(controller('AppBundle:Category:getMenu')) }}
                         <li>
                             <a href="#" data-toggle="modal" data-target="#addCategorieModal"><i class="fa fa-plus-circle"></i> Add a categorie</a>
                         </li>
