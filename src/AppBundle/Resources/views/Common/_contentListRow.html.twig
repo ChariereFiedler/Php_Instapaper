@@ -14,9 +14,11 @@
         </div>
         <!-- /.col-lg-12 -->
     </div>
-    {% for link in data %}
-        {% include "AppBundle:Link:_row.html.twig" with {'link' : link} only %}
-    {% endfor %}
+    <div class="row">
+        {% for link in data %}
+            {% include "AppBundle:Link:_row.html.twig" with {'link' : link} only %}
+        {% endfor %}
+    </div>
 
 
     <div id="editFolderModal{{title}}" class="modal fade" role="dialog">
