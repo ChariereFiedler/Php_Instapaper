@@ -1,7 +1,1 @@
-{% extends "AppBundle::template.html.twig" %}
-
-{% block content %}
-    {% for link in data %}
-        {% include "AppBundle:Link:_row.html.twig" with {'link' : link} only %}
-    {% endfor %}
-{% endblock %}
+{% include "AppBundle:Common:_contentListRow.html.twig" with {'data' : data, 'icon' : 'fa-home', 'title' : 'Home', 'editable' : false} only %}
