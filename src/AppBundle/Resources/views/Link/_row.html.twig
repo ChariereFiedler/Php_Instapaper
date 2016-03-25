@@ -1,4 +1,4 @@
-<div class="col-lg-8">
+<div class="col-lg-8" name="link">
     <div class="panel panel-primary">
         <div class="panel-heading">
             {% if link.url %}
@@ -35,13 +35,11 @@
                     <i class="fa fa-archive fa-lg"></i>
                 </li>
                 <li>
-                    <i class="fa fa-trash-o fa-lg"></i>
+                    <i data-id="{{ link.id }}" class="deleteLink fa fa-trash-o fa-lg" data-target="link"></i>
                 </li>
             </ul>
         </div>
     </div>
-
-
     <div id="editRowModal{{link.id}}" class="modal fade" role="dialog">
         {% include "AppBundle:Common:_editRowModal.html.twig" with {'link' : link} only %}
     </div>

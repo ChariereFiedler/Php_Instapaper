@@ -58,7 +58,6 @@ class LinkController extends  FOSRestController
     /**
      * @param Link $link
      * @View()
-     * @Delete("/links")
      * @return Link
      */
     public function  deleteLinkAction(Link $link):Link {

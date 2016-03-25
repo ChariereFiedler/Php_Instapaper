@@ -1,2 +1,38 @@
-{% include "AppBundle:Common:_contentListRow.html.twig" with {'data' : data, 'icon' : 'fa-home', 'title' : 'Home', 'editable' : false} only %}
+{% extends "AppBundle::template.html.twig" %}
 
+{% block javascript %}
+    {{ parent() }}
+{% endblock %}
+
+
+{% block content %}
+    {% include "AppBundle:Common:_contentListRow.html.twig" with {'data' : data, 'icon' : 'fa-home', 'title' : 'Home', 'editable' : false} only %}
+
+    <script type="text/javascript">
+        $(".deleteLink").click(function(){
+            var that = this;
+            var id = $(that).data("id");
+
+            var target = $(that).data("target");
+            if(target) {
+                $(that).parents("div[name="+target+"]").slideUp();
+            }
+
+            $.ajax({
+                type: "DELETE",
+                contentType: "application/json",
+                url: "/api/links/"+id,
+                processData: false,
+                dataType: "json",
+                success: function(result) {
+
+                },
+                error: function(result) {
+                    if(target) {
+                        $(that).parents("div[name="+target+"]").slideDown();
+                    }
+                }
+            });
+        });
+    </script>
+{% endblock %}
