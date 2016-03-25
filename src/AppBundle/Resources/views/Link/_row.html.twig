@@ -1,35 +1,48 @@
-<div class="article"> <!-- liked tag possible -->
-    <div class="topArticle">
-        <div class="articleResume">
+<div class="col-lg-8">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
             {% if link.url %}
-            <a class="title" href="{{link.url}}">
+            <a class="headerRow" href="{{link.url}}">
             {% endif %}
-                <h2>{{link.title}}</h2>
-                {% if link.url %}
+                {{link.title}}
+            {% if link.url %}
             </a>
             {% endif %}
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#editRowModal">Edit</button>
         </div>
-
-        <div class="articleImg">
-            {% if link.imgUrl is defined%}
-                <img src="{{imgUrl}}"/>
-            {% endif %}
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-9">
+                    <p>Resume</p>
+                </div>
+                <div class="col-lg-2">
+                    {% if link.imgUrl is defined%}
+                        <img src="{{imgUrl}}"/>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <ul class="nav navbar-top-links footerRow">
+                <li>
+                    <i class="fa fa-heart-o fa-lg unlike"></i>
+                    <i class="fa fa-heart fa-lg like"></i>
+                </li>
+                <li>
+                    <i class="fa fa-folder-o fa-lg"></i>
+                </li>
+                <li>
+                    <i class="fa fa-archive fa-lg"></i>
+                </li>
+                <li>
+                    <i class="fa fa-trash-o fa-lg"></i>
+                </li>
+            </ul>
         </div>
     </div>
 
-    <div>
-        <div class="buttonArticle">
-            <i class="fa fa-heart-o fa-lg unlike"></i>
-            <i class="fa fa-heart fa-lg like"></i>
-        </div>
-        <div class="buttonArticle">
-            <i class="fa fa-folder-o fa-lg"></i>
-        </div>
-        <div class="buttonArticle">
-            <i class="fa fa-archive fa-lg"></i>
-        </div>
-        <div class="buttonArticle">
-            <i class="fa fa-trash-o fa-lg"></i>
-        </div>
+
+    <div id="editRowModal" class="modal fade" role="dialog">
+        {% include "AppBundle:Common:_editRowModal.html.twig" with {'link' : link} only %}
     </div>
 </div>
