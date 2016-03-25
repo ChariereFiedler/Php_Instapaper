@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Bookmark.iml" filepath="$PROJECT_DIR$/.idea/Bookmark.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Php_Instapaper.iml" filepath="$PROJECT_DIR$/.idea/Php_Instapaper.iml" />
     </modules>
   </component>
 </project>
