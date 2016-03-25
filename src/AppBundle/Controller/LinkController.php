@@ -55,16 +55,6 @@ class LinkController extends  FOSRestController
         return $this->getRepository()->findAll();
     }
 
-    /**
-     * @param Link $link
-     * @View()
-     * @return Link
-     */
-    public function patchLinkAction(Link $link):Link{
-        $this->getEntityManager()->persist($link);
-        $this->getEntityManager()->flush();
-        return $link;
-    }
 
 
     /**
@@ -110,10 +100,36 @@ class LinkController extends  FOSRestController
      *
      * @Post("/links")
      */
-    public function postLinkAction(Link $link,  ConstraintViolationListInterface $validationErrors){
+    public function postLinkAction(Link $link,  ConstraintViolationListInterface $validationErrors):Link{
+
+
             $this->getEntityManager()->persist($link);
             $this->getEntityManager()->flush();
 
+        return $link;
+    }
+
+
+    /**
+     *
+     * @View(statusCode=200)
+     * @ParamConverter("link", class="AppBundle:Link")
+     * @ParamConverter("toUpdate", converter="fos_rest.request_body", class="AppBundle\Entity\Link")
+     * @Patch("/links/{link}")
+     */
+    public function patchLinkAction(Link $link, Link $toUpdate):Link{
+
+        //TODO: Replace this reflection method with better solution respecting the encapsulation
+        // Try maybe a custom converter
+        $reflect = new \ReflectionClass($toUpdate);
+        $props = $reflect->getProperties();
+        foreach($props as $prop){
+            if($toUpdate->{$prop->getName()} !== NULL) {
+                $link->{$prop->getName()} = $prop->getValue($toUpdate);
+            }
+        }
+        $this->getEntityManager()->persist($link);
+        $this->getEntityManager()->flush();
         return $link;
     }
 

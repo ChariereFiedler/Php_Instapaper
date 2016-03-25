@@ -16,60 +16,60 @@ class Link
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="guid")
+     * @ORM\Column(name="id", type="string")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
      *
      * @Assert\Uuid
      */
-    private $id;
+    public $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="Title", type="string", length=255, nullable=true)
      */
-    private $title;
+    public $title;
 
     /**
      * @var string
      *
      * @ORM\Column(name="Content", type="text", nullable=true)
      */
-    private $content;
+    public $content;
 
     /**
      * @var string
      *
      * @ORM\Column(name="Url", type="string", length=500)
      */
-    private $url;
+    public $url;
 
     /**
      * @var bool
      *
      * @ORM\Column(name="Read", type="boolean", options={"default"=false})
      */
-    private $read=false;
+    public $read=false;
 
     /**
      * @var bool
      *
      * @ORM\Column(name="Archived", type="boolean", options={"default"=false})
      */
-    private $archived=false;
+    public $archived=false;
 
     /**
      * @var bool
      * @ORM\Column(name="Liked", type="boolean", options={"default"=false})
      */
-    private $liked=false;
+    public $liked=false;
 
     /**
      * @var bool
      * @ORM\Column(name="Built", type="boolean", options={"default"=false})
      */
-    private $built=false;
+    public $built=false;
 
 
     /**
