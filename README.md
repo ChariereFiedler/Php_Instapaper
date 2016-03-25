@@ -3,14 +3,14 @@ Bookmark
 
 Un projet Symfony développé par Cédric Charière Fiedler et Colas Pomies
 
-* Installer
-** Prérequis
+# Installer
+## Prérequis
 
 - PHP 7
 - Bower
 - Composer
 
-** Installation des vendors
+## Installation des vendors
 L'application s'appuie sur Composer et Bower.
 
     composer install
@@ -23,16 +23,16 @@ et enfin installer les vendors
 
     php bin\console assets:install
 
-** Exécuter l'application
+## Exécuter l'application
 L'outil embarque une base de données sqlite fournie avec les sources.
 
     php bin/console server:run
 
 L'application est accessible à l'adresse `localhost:8000/links`
 
-* Travail réalisé
+# Travail réalisé
 
-** Application orientée API
+## Application orientée API
 
 L'application s'appuie sur FosRestBundle et sur les nombreux listeners proposés.
 En outre de proposer une interface graphique, des points d'entrées REST ont été mis en place, notamment les verbes :
@@ -45,7 +45,7 @@ Il n'existe pas encore d'option de filtrage par requête, ni d'implémentation c
 
 La serialization / deserialization est gérée en XML et JSON.
 
-** Worker
+## Worker
 
 Une commande console permet de construire les liens dont seul le lien est enregistré en base. Il nécessite l'utilisation de PHP-CLI.
 Selon le système d'exploitation hôte de cette application, une tâche CRON peut  faire appel à cette methode :
@@ -54,7 +54,7 @@ Selon le système d'exploitation hôte de cette application, une tâche CRON peu
 
 Le service `AppBundle:Service:LinkBuilderFromWebPage`
 
-** Application graphique
+## Application graphique
 
 La partie graphique s'appuie sur le moteur de rendu Twig et sur la bibliothèque Jquery.
 
